@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        .hero {
+            background-color: #3273dc;
+            color: white;
+        }
+        .hero-body {
+            padding: 2rem 1.5rem;
+        }
+        .section {
+            padding: 3rem 1.5rem;
+        }
+        .card {
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title has-text-centered">Bienvenido a WeiSoft</h1>
+                <h2 class="subtitle has-text-centered">Explora las opciones a continuación</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title">Vista de Notificaciones</p>
+                            <p class="subtitle">Revisa todas las notificaciones registradas.</p>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="{% url 'notifications_list' %}" class="card-footer-item">Ir a Notificaciones</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title">Vista de Conductores</p>
+                            <p class="subtitle">Consulta la lista de conductores.</p>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="{% url 'drivers_list' %}" class="card-footer-item">Ir a Conductores</a>
+                        </footer>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title">Acerca del Proyecto</p>
+                            <p class="subtitle">Conoce más sobre este proyecto innovador.</p>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item">Más Información</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

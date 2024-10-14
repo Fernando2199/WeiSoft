@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Notificaciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #e9ecef;
+        }
+        .hero {
+            background-color: #6c63ff;
+            color: white;
+        }
+        .hero-body {
+            padding: 2rem 1.5rem;
+        }
+        .section {
+            padding: 3rem 1.5rem;
+        }
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0 15px;
+            width: 100%;
+        }
+        th {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            background-color: white;
+            border: none;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        tr:hover td {
+            background-color: #f1f1f1;
+        }
+    </style>
+       <script>
+        // Recargar la página cada 5 segundo
+        setInterval(function() {
+            window.location.reload();
+        }, 5000); // 5000 milisegundos = 5 segundo
+    </script>
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title has-text-centered">Lista de Notificaciones</h1>
+                <div class="has-text-centered">
+                    <a href="{% url 'home' %}" class="button is-light is-outlined">Volver a la Página Principal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="table-container">
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo de Evento</th>
+                            <th>Descripción</th>
+                            <th>Fecha y Hora</th>
+                            <th>Conductor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for notification in notifications %}
+                        <tr>
+                            <td>{{ notification.id }}</td>
+                            <td>{{ notification.get_event_type_display }}</td>
+                            <td>{{ notification.description }}</td>
+                            <td>{{ notification.timestamp }}</td>
+                            <td>
+                                {% if notification.driver %}
+                                    {{ notification.driver.name }}
+                                {% else %}
+                                    N/A
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
